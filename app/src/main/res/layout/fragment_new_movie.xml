@@ -11,7 +11,10 @@
     <TextView
             android:text="Add New Movie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView3" android:textSize="30sp"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textSize="30sp"/>
+
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

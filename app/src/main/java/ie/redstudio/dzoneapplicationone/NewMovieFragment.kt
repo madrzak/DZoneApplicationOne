@@ -1,7 +1,6 @@
 package ie.redstudio.dzoneapplicationone
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,7 +40,20 @@ class NewMovieFragment : Fragment() {
 
 
         button.setOnClickListener {
-            Toast.makeText(activity, editText.text.toString(), Toast.LENGTH_SHORT).show()
+            val input = editText.text.toString().trim()
+
+            if (input.isEmpty()) {
+                Toast.makeText(activity, "Title required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (input.length > 30) {
+                Toast.makeText(activity, "Title too long", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            Toast.makeText(activity, "$input entered", Toast.LENGTH_SHORT).show()
+            listener?.goToMovieListFragment()
         }
     }
 
@@ -62,8 +74,7 @@ class NewMovieFragment : Fragment() {
      * for more information.
      */
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        fun goToMovieListFragment()
     }
 
     companion object {
