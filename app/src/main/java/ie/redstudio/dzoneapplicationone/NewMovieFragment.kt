@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_new_movie.*
 
 class NewMovieFragment : Fragment() {
@@ -15,6 +16,13 @@ class NewMovieFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Create a ViewModel the first time the system calls an activity's onCreate() method.
+        // Re-created activities receive the same MyViewModel instance created by the first activity.
+
+        val model = ViewModelProviders.of(this).get(NewMovieViewModel::class.java)
+
+
     }
 
     override fun onCreateView(
