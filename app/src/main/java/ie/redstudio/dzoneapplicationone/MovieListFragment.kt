@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import ie.redstudio.dzoneapplicationone.data.AppDatabase
 import kotlinx.android.synthetic.main.fragment_movie_list.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MovieListFragment : Fragment() {
@@ -29,6 +32,12 @@ class MovieListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btnAdd.setOnClickListener {
+
+            val dao =  AppDatabase.getInstance(this.context!!)?.movieDao()
+            GlobalScope.launch {
+               dao?.getAll()
+            }
+
             listener?.goToNewMovieFragment()
         }
     }

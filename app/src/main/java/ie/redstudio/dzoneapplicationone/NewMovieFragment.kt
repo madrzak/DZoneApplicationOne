@@ -14,13 +14,15 @@ class NewMovieFragment : Fragment() {
 
     private var listener: OnFragmentInteractionListener? = null
 
+    private lateinit var mViewModel: NewMovieViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Create a ViewModel the first time the system calls an activity's onCreate() method.
         // Re-created activities receive the same MyViewModel instance created by the first activity.
 
-        val model = ViewModelProviders.of(this).get(NewMovieViewModel::class.java)
+        mViewModel = ViewModelProviders.of(this).get(NewMovieViewModel::class.java)
 
 
     }
@@ -59,6 +61,8 @@ class NewMovieFragment : Fragment() {
                 Toast.makeText(activity, "Title too long", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            mViewModel.storeMovie(input)
 
             Toast.makeText(activity, "$input entered", Toast.LENGTH_SHORT).show()
             listener?.goToMovieListFragment()
