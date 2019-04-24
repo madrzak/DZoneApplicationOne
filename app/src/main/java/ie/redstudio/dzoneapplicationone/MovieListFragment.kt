@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import ie.redstudio.dzoneapplicationone.data.AppDatabase
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 import kotlinx.coroutines.GlobalScope
@@ -16,8 +17,15 @@ class MovieListFragment : Fragment() {
 
     private var listener: OnFragmentInteractionListener? = null
 
+    private lateinit var mViewModel: NewMovieViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        mViewModel = ViewModelProviders.of(this).get(NewMovieViewModel::class.java)
+        mViewModel.retrieveMovies()
+
     }
 
     override fun onCreateView(
@@ -40,6 +48,7 @@ class MovieListFragment : Fragment() {
 
             listener?.goToNewMovieFragment()
         }
+
     }
 
     override fun onAttach(context: Context) {

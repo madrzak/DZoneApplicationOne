@@ -6,6 +6,7 @@ import ie.redstudio.dzoneapplicationone.data.AppDatabase
 import ie.redstudio.dzoneapplicationone.data.Movie
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Created by Łukasz on 21/03/2019.
@@ -24,4 +25,12 @@ class NewMovieViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun retrieveMovies() {
+
+        GlobalScope.launch {
+            val list = mDb?.movieDao()?.getAll()
+            Timber.i("retrieveMovies list count ${list?.size}")
+        }
+    }
+    
 }

@@ -24,7 +24,6 @@ class NewMovieFragment : Fragment() {
 
         mViewModel = ViewModelProviders.of(this).get(NewMovieViewModel::class.java)
 
-
     }
 
     override fun onCreateView(

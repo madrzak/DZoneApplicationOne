@@ -2,6 +2,7 @@ package ie.redstudio.dzoneapplicationone
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), NewMovieFragment.OnFragmentInteractionListener,
     MovieListFragment.OnFragmentInteractionListener {
@@ -11,6 +12,7 @@ class MainActivity : AppCompatActivity(), NewMovieFragment.OnFragmentInteraction
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Timber.plant(Timber.DebugTree())
 
         if (savedInstanceState == null) {
             goToMovieListFragment()
