@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import ie.redstudio.dzoneapplicationone.data.AppDatabase
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 import kotlinx.coroutines.GlobalScope
@@ -54,6 +55,8 @@ class MovieListFragment : Fragment() {
 
             listener?.goToNewMovieFragment()
         }
+
+        rvList.layoutManager = LinearLayoutManager(activity)
 
     }
 
