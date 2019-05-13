@@ -31,6 +31,8 @@ class MovieListFragment : Fragment() {
 
             Timber.i("received the movies ${it.size}")
 
+            rvList.adapter = MovieRecyclerAdapter(it)
+
         })
 
     }
